@@ -25,6 +25,9 @@ function addContact(e) {
     // create new ui object
     const ui = new UI();
 
+    // create new Local Storage object
+    const ls = new LS();
+
     // control form data
     if (firstName === "" | lastName === "" | city === "" | street === "" | postCode === "" | phone === "") {
         ui.alertMessage("Add ALL new contact data!", "problem");
@@ -33,6 +36,8 @@ function addContact(e) {
         const person = new Person(firstName, lastName, city, street, postCode, phone);
         // add person object data to html table
         ui.addPersonToTable(person);
+        // save person data to Local Storage
+        ls.saveContact(person);
         ui.alertMessage("Added contact to address book!", "ok");
     }
     e.preventDefault();
