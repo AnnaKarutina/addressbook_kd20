@@ -7,6 +7,9 @@ const contacts = document.querySelector('#contacts-table');
 // define event listeners
 // add contact to table - submit button
 form.addEventListener('submit', addContact);
+// delete contact from table - link click
+contacts.addEventListener('click', deleteContact);
+
 
 // project functions
 // addContact
@@ -32,6 +35,17 @@ function addContact(e) {
         ui.addPersonToTable(person);
         ui.alertMessage("Added contact to address book!", "ok");
     }
+    e.preventDefault();
+}
+
+// deleteContact
+function deleteContact(e) {
+    // create new ui object
+    const ui = new UI();
+    // delete contact
+    ui.deletePersonFromTable(e.target);
+    // set alert
+    ui.alertMessage("Person contact is deleted", "ok");
     e.preventDefault();
 }
 
