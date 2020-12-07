@@ -32,14 +32,19 @@ class LS {
         // get all data from LS
         const persons = this.getContacts();
         // controll each contact
-        persons.forEach(function (person, index){
-            if(person.firstName === firstname && person.lastName === lastname){
+        persons.forEach(function (person, index) {
+            if (person.firstName === firstname && person.lastName === lastname) {
                 persons.splice(index, 1);
             }
         });
         // set up data on LS
         localStorage.setItem('persons', JSON.stringify(persons));
         // return true
+        return true;
+    }
+
+    clearContacts() {
+        localStorage.clear();
         return true;
     }
 }
